@@ -113,24 +113,48 @@ class _MarketplaceDetailsPageState extends State<MarketplaceDetailsPage> {
   // }
 
   Widget followersRequirement(FollowersRange followersRange) {
-    List<Map<String, String>> followerRanges = [];
+    List<Map<String, dynamic>> followerRanges = [];
 
     // Instagram followers range
     if (followersRange.igFollowersMin.isNotEmpty && followersRange.igFollowersMax.isNotEmpty) {
-      followerRanges.add({'platform': 'Instagram', 'range': "${followersRange.igFollowersMin} - ${followersRange.igFollowersMax}+", 'icon': 'assets/instagram.png'});
+      followerRanges.add({
+        'platform': 'Instagram',
+        'range': "${followersRange.igFollowersMin} - ${followersRange.igFollowersMax}+",
+        'icon': 'assets/instagram.png',
+      });
     } else if (followersRange.igFollowersMin.isNotEmpty) {
-      followerRanges.add({'platform': 'Instagram', 'range': "${followersRange.igFollowersMin}+", 'icon': 'assets/instagram.png'});
+      followerRanges.add({
+        'platform': 'Instagram',
+        'range': "${followersRange.igFollowersMin}+",
+        'icon': 'assets/instagram.png',
+      });
     } else if (followersRange.igFollowersMax.isNotEmpty) {
-      followerRanges.add({'platform': 'Instagram', 'range': "Up to ${followersRange.igFollowersMax}", 'icon': 'assets/instagram.png'});
+      followerRanges.add({
+        'platform': 'Instagram',
+        'range': "Up to ${followersRange.igFollowersMax}",
+        'icon': 'assets/instagram.png',
+      });
     }
 
     // YouTube subscribers range
     if (followersRange.ytSubscribersMin!.isNotEmpty && followersRange.ytSubscribersMax!.isNotEmpty) {
-      followerRanges.add({'platform': 'YouTube', 'range': "${followersRange.ytSubscribersMin} - ${followersRange.ytSubscribersMax}+", 'icon': 'assets/youtube.png'});
+      followerRanges.add({
+        'platform': 'YouTube',
+        'range': "${followersRange.ytSubscribersMin} - ${followersRange.ytSubscribersMax}+",
+        'icon': 'assets/youtube.png',
+      });
     } else if (followersRange.ytSubscribersMin!.isNotEmpty) {
-      followerRanges.add({'platform': 'YouTube', 'range': "${followersRange.ytSubscribersMin}+", 'icon': 'assets/youtube.png'});
+      followerRanges.add({
+        'platform': 'YouTube',
+        'range': "${followersRange.ytSubscribersMin}+",
+        'icon': 'assets/youtube.png',
+      });
     } else if (followersRange.ytSubscribersMax!.isNotEmpty) {
-      followerRanges.add({'platform': 'YouTube', 'range': "Up to ${followersRange.ytSubscribersMax}", 'icon': 'assets/youtube.png'});
+      followerRanges.add({
+        'platform': 'YouTube',
+        'range': "Up to ${followersRange.ytSubscribersMax}",
+        'icon': 'assets/youtube.png',
+      });
     }
 
     if (followerRanges.isEmpty) return SizedBox();
@@ -154,11 +178,14 @@ class _MarketplaceDetailsPageState extends State<MarketplaceDetailsPage> {
               padding: const EdgeInsets.only(bottom: 4),
               child: Row(
                 children: [
-                  Image.asset(
-                    item['icon']!,
-                    width: 14,
-                    height: 14,
-                    errorBuilder: (context, error, stackTrace) => Icon(Icons.error, size: 16, color: Colors.red),
+                  ColorFiltered(
+                    colorFilter: ColorFilter.mode(Color(0xffAAAAAA), BlendMode.srcIn), // Apply grey color
+                    child: Image.asset(
+                      item['icon']!,
+                      width: 14,
+                      height: 14,
+                      errorBuilder: (context, error, stackTrace) => Icon(Icons.error, size: 14, color: Colors.red),
+                    ),
                   ),
                   SizedBox(width: 5),
                   Text(
