@@ -398,7 +398,7 @@ class _MarketplaceDetailsPageState extends State<MarketplaceDetailsPage> {
                                       fontWeight: FontWeight.w500,
                                       fontSize: 13,
                                       letterSpacing: 0,
-                                      color: Color(0xFFF5F6FB),
+                                      color: Color(0xff7E7E7E),
                                     ),
                                     overflow: TextOverflow.ellipsis,
                                   ),
